@@ -2,14 +2,14 @@
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AEROSTRUCT | Aircraft Structural Analysis & FEM Simulation Lab</title>
 <style>
-:root{--bg:#09131f;--p:#102036;--p2:#16294a;--b:#22395c;--t:#dbe7f7;--m:#8ba2c0;--c:#22d3ee;--o:#fb923c;--r:#ef4444;--g:#34d399}
+:root{--bg:#eaf2fb;--p:#ffffff;--p2:#e1edf9;--b:#c5d6e8;--t:#10283f;--m:#587089;--c:#0369a1;--o:#c2410c;--r:#dc2626;--g:#047857}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font:13px/1.55 "Segoe UI",system-ui,sans-serif}
-header{position:sticky;top:0;z-index:9;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 16px;background:#0b1829;border-bottom:1px solid var(--b)}
+header{position:sticky;top:0;z-index:9;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 16px;background:#fff;border-bottom:3px solid var(--c)}
 header h1{font-size:16px;margin:0;letter-spacing:.5px}header h1 b{color:var(--c)}header small{color:var(--m)}
 .sp{flex:1}.pill{padding:2px 10px;border-radius:99px;border:1px solid var(--b);font-size:12px}
 .pill.ok{color:var(--g);border-color:var(--g)}.pill.err{color:var(--r);border-color:var(--r)}.pill.stale{color:var(--o);border-color:var(--o)}
-button,select,input{font:inherit;color:var(--t);background:#0c1a2e;border:1px solid var(--b);border-radius:5px;padding:5px 9px}
-button{cursor:pointer}button:hover{border-color:var(--c)}button.pri{background:#0e7490;border-color:var(--c);font-weight:600}
+button,select,input{font:inherit;color:var(--t);background:#f6faff;border:1px solid var(--b);border-radius:5px;padding:5px 9px}
+button{cursor:pointer}button:hover{border-color:var(--c)}button.pri{background:#0369a1;border-color:#0369a1;color:#fff;font-weight:600}
 #app{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 48px)}
 nav{background:var(--p);border-right:1px solid var(--b);padding:10px 0}
 nav a{display:block;padding:8px 16px;color:var(--m);cursor:pointer;border-left:3px solid transparent}
@@ -23,13 +23,13 @@ h2{margin:0 0 10px;font-size:18px}h3{margin:0 0 8px;font-size:14px;color:var(--c
 .fld{display:grid;grid-template-columns:1fr 130px;gap:6px 10px;align-items:center;margin:6px 0}.fld small{color:var(--m)}
 table{border-collapse:collapse;width:100%;font-size:12px}th,td{padding:3px 8px;border-bottom:1px solid var(--b);text-align:right;white-space:nowrap}th{color:var(--m);font-weight:600}td:first-child,th:first-child{text-align:left}
 .sc{max-height:280px;overflow:auto}canvas{width:100%;height:230px;display:block}
-svg.vp{width:100%;background:#0a1626;border:1px solid var(--b);border-radius:6px;display:block;touch-action:none}
+svg.vp{width:100%;background-color:#f4f9ff;background-image:linear-gradient(#d9e7f5 1px,transparent 1px),linear-gradient(90deg,#d9e7f5 1px,transparent 1px);background-size:24px 24px;border:1px solid var(--b);border-radius:6px;display:block;touch-action:none}
 .err{color:var(--r)}.warn{color:var(--o)}.note{color:var(--m);font-size:12px}.ok{color:var(--g)}
-#tip{position:fixed;pointer-events:none;background:#020a14;border:1px solid var(--c);padding:4px 8px;border-radius:4px;font-size:12px;display:none;z-index:20}
+#tip{position:fixed;pointer-events:none;background:#10283f;color:#fff;border:1px solid var(--c);padding:4px 8px;border-radius:4px;font-size:12px;display:none;z-index:20}
 .bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
-details{border:1px solid var(--b);border-radius:6px;padding:6px 10px;margin:6px 0;background:#0c1a2e}summary{cursor:pointer;color:var(--c)}
-pre{white-space:pre-wrap;background:#06101c;padding:10px;border-radius:6px;border:1px solid var(--b);font-size:12px}
-.sub button.on{background:#0e7490;border-color:var(--c)}.disc{color:var(--o);font-size:12px}
+details{border:1px solid var(--b);border-radius:6px;padding:6px 10px;margin:6px 0;background:#f6faff}summary{cursor:pointer;color:var(--c)}
+pre{white-space:pre-wrap;background:#f6faff;padding:10px;border-radius:6px;border:1px solid var(--b);font-size:12px}
+.sub button.on{background:#0369a1;border-color:#0369a1;color:#fff}.disc{color:var(--o);font-size:12px}
 @media(max-width:800px){#app{grid-template-columns:1fr}nav{display:flex;overflow:auto}nav h4{display:none}nav a{white-space:nowrap;border-left:0}}
 @media print{body{background:#fff;color:#000}header,nav,.noprint{display:none!important}.tab{display:none!important}#t-rep{display:block!important}#app{display:block}pre{background:#fff;color:#000;border:0}}
 .gl{display:grid;grid-template-columns:230px 1fr;gap:6px 16px}.gl dt{color:var(--t);font-weight:600}.gl dd{margin:0;color:var(--m)}.gl dt small{display:block;color:var(--c);font-weight:400}@media(max-width:800px){.gl{grid-template-columns:1fr}}
@@ -86,7 +86,7 @@ Skala deformasi <input id="vscale" type="range" min="0" max="150" value="50"> <s
 
 <section class="tab" id="t-d3"><h2>Simulasi 3D</h2><div class="card"><div class="bar noprint">
 <button id="d3play">▶ Animasi pembebanan</button> Skala deformasi <input id="d3s" type="range" min="0" max="150" value="50"> Lebar b (m) <input id="b3" type="number" step="any" value="0.8" style="width:80px"> Tinggi h (m) <input id="h3" type="number" step="any" value="0.2" style="width:80px"><button id="d3app">Terapkan I=bh³/12 &amp; c=h/2 ke model</button><button id="d3rst">Reset view</button></div>
-<canvas id="c3d" style="height:440px;background:#0a1626;border:1px solid var(--b);border-radius:6px;cursor:grab"></canvas>
+<canvas id="c3d" style="height:440px;background-color:#f4f9ff;background-image:linear-gradient(#d9e7f5 1px,transparent 1px),linear-gradient(90deg,#d9e7f5 1px,transparent 1px);background-size:24px 24px;border:1px solid var(--b);border-radius:6px;cursor:grab"></canvas>
 <p class="note">Seret untuk memutar, roda mouse untuk zoom. Ini <b>visualisasi 3D dari hasil FEM balok 1D</b> (defleksi w(x) nyata dari solver, warna = |σ| lentur), <b>bukan</b> solver FEM 3D solid/shell. Lebar b hanya untuk tampilan kecuali Anda menekan tombol “Terapkan”. Penampang digambar diperbesar agar terlihat; deformasi diskalakan hanya untuk tampilan. Animasi = rampa beban kuasi-statik (hasil linear dikali faktor 0→1), bukan dinamika.</p></div></section>
 
 <section class="tab" id="t-calc"><h2>Perhitungan Detail Metode Numerik</h2>
@@ -149,7 +149,7 @@ Residual relatif = ‖K_f u − F_f‖ / ‖F_f‖ ;  galat rel = |w_FEM − w_a
 <details><summary>Batasan penting</summary><ul><li>Model 1D tidak menggambarkan medan tegangan 3D sayap, torsi, geser, tekuk, kelelahan, beban aerodinamik nyata, atau aeroelastisitas.</li><li>Asumsi: material linear-elastis, penampang konstan, deformasi kecil, satu jenis tumpuan (jepit).</li><li>Solver kecil untuk edukasi, bukan paket FEA industri.</li></ul></details>
 <details><summary>Tips presentasi tugas kuliah</summary><p>Mulai dari Overview, jelaskan model dan asumsi, tunjukkan Perhitungan Detail (n=2) untuk membuktikan Anda paham langkah numeriknya, lanjutkan ke Konvergensi &amp; Validasi, lalu tutup dengan Resume Analisis. Pakai tab Glosarium untuk menjawab pertanyaan istilah.</p></details>
 <p class="disc">Educational Simulation — Not for Aircraft Certification or Airworthiness Decisions</p></div>
-<div class="card" id="s-upd" style="display:none"><h3>Info update fitur</h3><b>v1.3.0 — 20 Okt 2026</b><ul><li>Tab Glosarium Istilah (≈75 istilah, bisa dicari) untuk pembaca awam.</li><li>Penjelasan “Tentang dashboard” diperluas: alur kerja, fungsi tab, apa yang nyata vs visualisasi, batasan, tips presentasi.</li></ul><b>v1.2.0 — 20 Okt 2026</b><ul><li>Diagram gaya geser V(x) (grafik + CSV).</li><li>Analisis modal: frekuensi alami pertama f₁ dengan matriks massa konsisten + iterasi invers, dibanding solusi analitik.</li><li>Tab Resume Analisis: kesimpulan otomatis dari hasil aktif (juga masuk laporan).</li></ul><b>v1.1.0 — 20 Okt 2026</b><ul><li>Tab Simulasi 3D: visualisasi 3D hasil FEM 1D (putar/zoom, warna tegangan, animasi rampa beban, kalkulator I=bh³/12).</li><li>Tab Perhitungan Detail: tahap Gauss, substitusi mundur, perakitan K, recovery M/σ dengan angka nyata + turunan teori.</li><li>Margin of Safety ilustratif (σ_yield, FS) di KPI dan laporan.</li><li>Belum ada: solver FEM 3D solid/shell, analisis modal.</li></ul><b>v1.0.0 — 20 Okt 2026 (rilis awal)</b><ul>
+<div class="card" id="s-upd" style="display:none"><h3>Info update fitur</h3><b>v1.3.1 — 20 Okt 2026</b><ul><li>Tema terang bergaya blueprint (kertas gambar teknik): latar kisi biru muda, panel putih, aksen biru langit; warna grafik dan viewport disesuaikan agar kontras di latar terang.</li></ul><b>v1.3.0 — 20 Okt 2026</b><ul><li>Tab Glosarium Istilah (≈75 istilah, bisa dicari) untuk pembaca awam.</li><li>Penjelasan “Tentang dashboard” diperluas: alur kerja, fungsi tab, apa yang nyata vs visualisasi, batasan, tips presentasi.</li></ul><b>v1.2.0 — 20 Okt 2026</b><ul><li>Diagram gaya geser V(x) (grafik + CSV).</li><li>Analisis modal: frekuensi alami pertama f₁ dengan matriks massa konsisten + iterasi invers, dibanding solusi analitik.</li><li>Tab Resume Analisis: kesimpulan otomatis dari hasil aktif (juga masuk laporan).</li></ul><b>v1.1.0 — 20 Okt 2026</b><ul><li>Tab Simulasi 3D: visualisasi 3D hasil FEM 1D (putar/zoom, warna tegangan, animasi rampa beban, kalkulator I=bh³/12).</li><li>Tab Perhitungan Detail: tahap Gauss, substitusi mundur, perakitan K, recovery M/σ dengan angka nyata + turunan teori.</li><li>Margin of Safety ilustratif (σ_yield, FS) di KPI dan laporan.</li><li>Belum ada: solver FEM 3D solid/shell, analisis modal.</li></ul><b>v1.0.0 — 20 Okt 2026 (rilis awal)</b><ul>
 <li>Solver FEM balok Euler–Bernoulli (Hermite), tumpuan jepit, beban ujung + merata.</li><li>Gauss partial pivoting &amp; Cholesky (kondisional), residual, reaksi &amp; ekuilibrium.</li><li>Viewport SVG 5 mode, zoom/pan, hover, legenda, grafik w/M/σ, studi konvergensi, skenario A–F, laporan CSV/MD/PDF.</li></ul>
 <b>Belum diimplementasikan (roadmap)</b><ul><li>Tumpuan lain (sederhana, propped), penampang bervariasi (tapered), beban titik di posisi bebas.</li><li>Elemen Timoshenko (geser), mode getar ke-2 dst., solver FEM 3D solid/shell.</li><li>Pemakaian Chart.js opsional (saat ini grafik canvas internal).</li></ul>
 <p class="note">Update berikutnya tidak otomatis: minta revisi fitur lalu ganti file ini dan catat di sini.</p></div></section>
@@ -217,34 +217,34 @@ function fail(m){S.res=null;S.conv=[];status('err','Galat: '+m);renderAll()}
 /* ================= UI: viz ================= */
 const cmap=t=>`hsl(${220-220*Math.min(1,Math.max(0,t))},85%,55%)`;
 function wAt(r,e,x){const L=r.Le,u=r.u,x2=x*x,x3=x2*x;return(1-3*x2+2*x3)*u[2*e]+L*(x-2*x2+x3)*u[2*e+1]+(3*x2-2*x3)*u[2*e+2]+L*(-x2+x3)*u[2*e+3]}
-function draw(svg,mode,o={}){const r=S.res;if(!r){svg.innerHTML='<text x="400" y="130" fill="#8ba2c0" text-anchor="middle">Belum ada hasil valid — perbaiki input lalu jalankan analisis</text>';return}
+function draw(svg,mode,o={}){const r=S.res;if(!r){svg.innerHTML='<text x="400" y="130" fill="#587089" text-anchor="middle">Belum ada hasil valid — perbaiki input lalu jalankan analisis</text>';return}
 const x0=70,Lp=660,sx=Lp/r.p.L,by=125,def=mode==='orig'||mode==='mesh'?0:S.def,lab=o.labels!==false,dir=r.p.dir;let h='<defs><linearGradient id="lg"><stop offset="0" stop-color="'+cmap(0)+'"/><stop offset=".5" stop-color="'+cmap(.5)+'"/><stop offset="1" stop-color="'+cmap(1)+'"/></linearGradient></defs>';
 const pt=(e,xi)=>[x0+(e+xi)*r.Le*sx,by-wAt(r,e,xi)*def*sx];
 const showOrig=mode!=='def'&&mode!=='stress';
-if(showOrig)h+=`<line x1="${x0}" y1="${by}" x2="${x0+Lp}" y2="${by}" stroke="${mode==='overlay'?'#5b7396':'#7aa2d6'}" stroke-width="${mode==='overlay'?2:12}" ${mode==='overlay'?'stroke-dasharray="6 4"':''}/>`;
+if(showOrig)h+=`<line x1="${x0}" y1="${by}" x2="${x0+Lp}" y2="${by}" stroke="${mode==='overlay'?'#5b7396':'#5f8fc4'}" stroke-width="${mode==='overlay'?2:12}" ${mode==='overlay'?'stroke-dasharray="6 4"':''}/>`;
 if(mode==='overlay'||mode==='def'||mode==='stress')r.els.forEach((el,e)=>{const ps=[];for(let k=0;k<=8;k++)ps.push(pt(e,k/8).join(','));
-const col=mode==='stress'?cmap(Math.abs(el.sc)/r.smax):'#22d3ee';
+const col=mode==='stress'?cmap(Math.abs(el.sc)/r.smax):'#0284c7';
 h+=`<polyline points="${ps.join(' ')}" fill="none" stroke="${col}" stroke-width="12"/><polyline data-tip="Elemen ${el.id}|x=${f(el.x1,3)}–${f(el.x2,3)} m|M=${f(el.M1,1)} / ${f(el.M2,1)} N·m|σ=${f(el.s1/1e6,2)} / ${f(el.s2/1e6,2)} MPa" points="${ps.join(' ')}" fill="none" stroke="transparent" stroke-width="26"/>`});
-if(mode==='mesh')r.els.forEach((el,e)=>{h+=`<line data-tip="Elemen ${el.id}|Le=${f(r.Le,4)} m" x1="${x0+e*r.Le*sx}" y1="${by}" x2="${x0+(e+1)*r.Le*sx}" y2="${by}" stroke="transparent" stroke-width="26"/><line x1="${x0+(e+1)*r.Le*sx}" y1="${by-14}" x2="${x0+(e+1)*r.Le*sx}" y2="${by+14}" stroke="#22d3ee"/>`});
+if(mode==='mesh')r.els.forEach((el,e)=>{h+=`<line data-tip="Elemen ${el.id}|Le=${f(r.Le,4)} m" x1="${x0+e*r.Le*sx}" y1="${by}" x2="${x0+(e+1)*r.Le*sx}" y2="${by}" stroke="transparent" stroke-width="26"/><line x1="${x0+(e+1)*r.Le*sx}" y1="${by-14}" x2="${x0+(e+1)*r.Le*sx}" y2="${by+14}" stroke="#0284c7"/>`});
 r.nodes.forEach((nd,i)=>{const[px,py]=i?pt(i-1,1):[x0,by];h+=`<circle data-tip="Node ${nd.id}|x=${f(nd.x,3)} m|w=${f(nd.w*1e3,4)} mm|θ=${f(nd.th,6)} rad" cx="${px}" cy="${py}" r="${r.n>40?2:4}" fill="#fff" stroke="#0e7490"/>`;
-if(lab&&r.n<=32&&mode!=='orig')h+=`<text x="${px}" y="${py-14}" fill="#8ba2c0" font-size="10" text-anchor="middle">N${nd.id}</text>`});
-if(lab&&r.n<=32&&(mode==='mesh'||mode==='orig'))r.els.forEach((el,e)=>h+=`<text x="${x0+(e+.5)*r.Le*sx}" y="${by+26}" fill="#22d3ee" font-size="10" text-anchor="middle">E${el.id}</text>`);
+if(lab&&r.n<=32&&mode!=='orig')h+=`<text x="${px}" y="${py-14}" fill="#587089" font-size="10" text-anchor="middle">N${nd.id}</text>`});
+if(lab&&r.n<=32&&(mode==='mesh'||mode==='orig'))r.els.forEach((el,e)=>h+=`<text x="${x0+(e+.5)*r.Le*sx}" y="${by+26}" fill="#0284c7" font-size="10" text-anchor="middle">E${el.id}</text>`);
 // tumpuan jepit
-h+=`<line x1="${x0}" y1="${by-34}" x2="${x0}" y2="${by+34}" stroke="#fb923c" stroke-width="4"/>`;for(let i=-34;i<34;i+=8)h+=`<line x1="${x0}" y1="${by+i+8}" x2="${x0-12}" y2="${by+i}" stroke="#fb923c"/>`;
+h+=`<line x1="${x0}" y1="${by-34}" x2="${x0}" y2="${by+34}" stroke="#ea580c" stroke-width="4"/>`;for(let i=-34;i<34;i+=8)h+=`<line x1="${x0}" y1="${by+i+8}" x2="${x0-12}" y2="${by+i}" stroke="#ea580c"/>`;
 // beban
 const arrow=(x,len,c)=>{const ts=by+dir*len,te=by+dir*(len>30?8:6),sy=-dir;return`<line x1="${x}" y1="${ts}" x2="${x}" y2="${te}" stroke="${c}" stroke-width="2"/><polygon points="${x},${te} ${x-5},${te-sy*10} ${x+5},${te-sy*10}" fill="${c}"/>`};
-if(r.p.P>0)h+=arrow(x0+Lp,60,'#ef4444')+`<text x="${x0+Lp-8}" y="${by+dir*66}" fill="#ef4444" font-size="11" text-anchor="end">P = ${f(r.p.P,0)} N</text>`;
-if(r.p.q>0){for(let i=1;i<=10;i++)h+=arrow(x0+i*Lp/10,26,'#fb923c');h+=`<line x1="${x0}" y1="${by+dir*26}" x2="${x0+Lp}" y2="${by+dir*26}" stroke="#fb923c"/><text x="${x0+Lp/2}" y="${by+dir*34}" fill="#fb923c" font-size="11" text-anchor="middle">q = ${f(r.p.q,1)} N/m</text>`}
-if(o.dim)h+=`<line x1="${x0}" y1="235" x2="${x0+Lp}" y2="235" stroke="#8ba2c0"/><text x="${x0+Lp/2}" y="228" fill="#dbe7f7" text-anchor="middle">L = ${f(r.p.L,3)} m · E = ${f(r.p.E,1)} GPa · I = ${r.p.I.toExponential(2)} m⁴ · c = ${f(r.p.c,3)} m</text>`;
-if(mode==='stress')h+=`<rect x="560" y="236" width="160" height="10" fill="url(#lg)"/><text x="560" y="256" fill="#8ba2c0" font-size="10">0</text><text x="720" y="256" fill="#8ba2c0" font-size="10" text-anchor="end">|σ| = ${f(r.smax/1e6,2)} MPa</text>`;
-if(def)h+=`<text x="12" y="16" fill="#8ba2c0" font-size="10">deformasi ×${f(def,1)} (tampilan saja)</text>`;
+if(r.p.P>0)h+=arrow(x0+Lp,60,'#dc2626')+`<text x="${x0+Lp-8}" y="${by+dir*66}" fill="#dc2626" font-size="11" text-anchor="end">P = ${f(r.p.P,0)} N</text>`;
+if(r.p.q>0){for(let i=1;i<=10;i++)h+=arrow(x0+i*Lp/10,26,'#ea580c');h+=`<line x1="${x0}" y1="${by+dir*26}" x2="${x0+Lp}" y2="${by+dir*26}" stroke="#ea580c"/><text x="${x0+Lp/2}" y="${by+dir*34}" fill="#ea580c" font-size="11" text-anchor="middle">q = ${f(r.p.q,1)} N/m</text>`}
+if(o.dim)h+=`<line x1="${x0}" y1="235" x2="${x0+Lp}" y2="235" stroke="#587089"/><text x="${x0+Lp/2}" y="228" fill="#10283f" text-anchor="middle">L = ${f(r.p.L,3)} m · E = ${f(r.p.E,1)} GPa · I = ${r.p.I.toExponential(2)} m⁴ · c = ${f(r.p.c,3)} m</text>`;
+if(mode==='stress')h+=`<rect x="560" y="236" width="160" height="10" fill="url(#lg)"/><text x="560" y="256" fill="#587089" font-size="10">0</text><text x="720" y="256" fill="#587089" font-size="10" text-anchor="end">|σ| = ${f(r.smax/1e6,2)} MPa</text>`;
+if(def)h+=`<text x="12" y="16" fill="#587089" font-size="10">deformasi ×${f(def,1)} (tampilan saja)</text>`;
 svg.innerHTML=h}
 /* ================= UI: charts ================= */
 function chart(cv,series,o={}){const W=cv.clientWidth,H=cv.clientHeight;if(!W)return;const dp=devicePixelRatio||1;cv.width=W*dp;cv.height=H*dp;const g=cv.getContext('2d');g.setTransform(dp,0,0,dp,0,0);g.clearRect(0,0,W,H);
-g.font='11px sans-serif';if(!series.length){g.fillStyle='#8ba2c0';g.fillText('Belum ada hasil valid',20,30);return}
+g.font='11px sans-serif';if(!series.length){g.fillStyle='#587089';g.fillText('Belum ada hasil valid',20,30);return}
 const m={l:58,r:12,t:10,b:36},X=o.logx?Math.log10:v=>v,Y=o.logy?v=>Math.log10(Math.max(v,1e-17)):v=>v;let xs=[],ys=[];series.forEach(s=>s.pts.forEach(p=>{xs.push(X(p[0]));ys.push(Y(p[1]))}));
 let x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);if(y0===y1){y0-=1;y1+=1}else if(!o.logy){const d=(y1-y0)*.08;y0-=d;y1+=d}if(x0===x1)x1+=1;
-const px=v=>m.l+(X(v)-x0)/(x1-x0)*(W-m.l-m.r),py=v=>H-m.b-(Y(v)-y0)/(y1-y0)*(H-m.t-m.b);g.strokeStyle='#22395c';g.fillStyle='#8ba2c0';
+const px=v=>m.l+(X(v)-x0)/(x1-x0)*(W-m.l-m.r),py=v=>H-m.b-(Y(v)-y0)/(y1-y0)*(H-m.t-m.b);g.strokeStyle='#c5d6e8';g.fillStyle='#587089';
 for(let i=0;i<=4;i++){const yy=y0+(y1-y0)*i/4,ypx=H-m.b-i/4*(H-m.t-m.b);g.beginPath();g.moveTo(m.l,ypx);g.lineTo(W-m.r,ypx);g.stroke();g.textAlign='right';g.fillText(o.logy?'1e'+yy.toFixed(0):(+yy.toPrecision(3)).toString(),m.l-4,ypx+3);
 const xx=x0+(x1-x0)*i/4,xpx=m.l+i/4*(W-m.l-m.r);g.textAlign='center';g.fillText(o.logx?(10**xx).toFixed(0):(+xx.toPrecision(3)).toString(),xpx,H-m.b+13)}
 g.fillText(o.xl||'',W/2,H-3);g.save();g.translate(11,H/2);g.rotate(-Math.PI/2);g.fillText(o.yl||'',0,0);g.restore();
@@ -282,10 +282,10 @@ if(r){const nn=r.nodes,es=r.els;L('tNode',tbl(['Node','x (m)','w (mm)','θ (rad)
 L('tEl',tbl(['Elemen','x1','x2','M1 (N·m)','M2 (N·m)','σ1 (MPa)','σ2 (MPa)'],es.map(e=>[e.id,f(e.x1,3),f(e.x2,3),f(e.M1,1),f(e.M2,1),f(e.s1/1e6,2),f(e.s2/1e6,2)])))}else{L('tNode','—');L('tEl','—')}
 L('tConv',S.conv.length?tbl(['Elemen','Node','w_FEM (mm)','w_analitik (mm)','Galat abs (mm)','Galat rel (%)','σ pusat elemen akar: galat (%)'],S.conv.map(c=>c.fail?[c.n,c.n+1,'—','—','—','—',c.fail]:[c.n,c.nodes,f(c.w*1e3,6),f(c.wA*1e3,6),c.ae.toExponential(2),c.re.toExponential(2),f(c.sc,3)])):'—');
 renderCharts();render3D();renderCalc();renderRes();$('#rep').textContent=r?report()+'\n'+resume(r).md:'Belum ada hasil valid untuk dilaporkan.\n\nEducational Simulation — Not for Aircraft Certification or Airworthiness Decisions'}
-function renderCharts(){const r=S.res;const w=r?[{n:'w',c:'#22d3ee',pts:r.nodes.map(v=>[v.x,v.w*1e3])}]:[],
-M=r?[{n:'M',c:'#fb923c',pts:r.els.flatMap(e=>[[e.x1,e.M1],[e.x2,e.M2]])}]:[],s=r?[{n:'σ',c:'#ef4444',pts:r.els.flatMap(e=>[[e.x1,e.s1/1e6],[e.x2,e.s2/1e6]])}]:[];
-chart($('#cShr'),r?[{n:'V',c:'#34d399',pts:r.els.flatMap(e=>[[e.x1,e.V1],[e.x2,e.V2]])}]:[],{xl:'x (m)',yl:'V (N)'});chart($('#cDef'),w,{xl:'x (m)',yl:'w (mm)'});chart($('#cDef2'),w,{xl:'x (m)',yl:'w (mm)'});chart($('#cMom'),M,{xl:'x (m)',yl:'M (N·m)'});chart($('#cStr'),s,{xl:'x (m)',yl:'σ (MPa)'});chart($('#cStr2'),s,{xl:'x (m)',yl:'σ (MPa)'});
-const ok=S.conv.filter(c=>!c.fail);chart($('#cConv'),ok.length?[{n:'w_tip',c:'#22d3ee',pts:ok.map(c=>[c.n,Math.max(c.re/100,1e-16)])},{n:'σ pusat elemen akar',c:'#fb923c',pts:ok.map(c=>[c.n,Math.max(c.sc/100,1e-16)])}]:[],{logx:1,logy:1,xl:'jumlah elemen',yl:'galat relatif'})}
+function renderCharts(){const r=S.res;const w=r?[{n:'w',c:'#0284c7',pts:r.nodes.map(v=>[v.x,v.w*1e3])}]:[],
+M=r?[{n:'M',c:'#ea580c',pts:r.els.flatMap(e=>[[e.x1,e.M1],[e.x2,e.M2]])}]:[],s=r?[{n:'σ',c:'#dc2626',pts:r.els.flatMap(e=>[[e.x1,e.s1/1e6],[e.x2,e.s2/1e6]])}]:[];
+chart($('#cShr'),r?[{n:'V',c:'#059669',pts:r.els.flatMap(e=>[[e.x1,e.V1],[e.x2,e.V2]])}]:[],{xl:'x (m)',yl:'V (N)'});chart($('#cDef'),w,{xl:'x (m)',yl:'w (mm)'});chart($('#cDef2'),w,{xl:'x (m)',yl:'w (mm)'});chart($('#cMom'),M,{xl:'x (m)',yl:'M (N·m)'});chart($('#cStr'),s,{xl:'x (m)',yl:'σ (MPa)'});chart($('#cStr2'),s,{xl:'x (m)',yl:'σ (MPa)'});
+const ok=S.conv.filter(c=>!c.fail);chart($('#cConv'),ok.length?[{n:'w_tip',c:'#0284c7',pts:ok.map(c=>[c.n,Math.max(c.re/100,1e-16)])},{n:'σ pusat elemen akar',c:'#ea580c',pts:ok.map(c=>[c.n,Math.max(c.sc/100,1e-16)])}]:[],{logx:1,logy:1,xl:'jumlah elemen',yl:'galat relatif'})}
 function stepBox(r){const b=$('#stepBox');if(!$('#steps').checked||!r){b.innerHTML='';return}
 let h=`<div class="fld"><label>Elemen terpilih</label><select id="selE">${r.els.map(e=>`<option>${e.id}</option>`).join('')}</select></div><p class="note">Kekakuan elemen k_e = (EI/Le³)·[[12,6Le,−12,6Le],…] dengan EI=${(r.p.E*1e9*r.p.I).toExponential(3)} N·m², Le=${f(r.Le,4)} m (urutan DOF: w_i, θ_i, w_j, θ_j). Satuan: N/m, N, N·m/rad.</p>`+mat(r.ke,3);
 h+='<h3 style="margin-top:10px">Sistem tereduksi [K]{u}={F}</h3>';h+=r.nfree<=12?mat(r.Kf.map((row,i)=>[...row,'| '+r.Ff[i].toExponential(2)]),2):'<span class="warn">Matriks terlalu besar ('+r.nfree+'×'+r.nfree+') untuk ditampilkan; gunakan ≤ 6 elemen.</span>';
@@ -334,7 +334,7 @@ $('#s-met').innerHTML='<h3>Bagaimana metode numerik bekerja</h3>'+LEARN.map(l=>`
 const V3={yaw:-.7,pitch:.4,zm:1,k:1,play:0};
 const shade=(t,l)=>`hsl(${220-220*Math.min(1,t)},80%,${l}%)`;
 function render3D(){const cv=$('#c3d'),r=S.res;if(!cv||!cv.clientWidth)return;const W=cv.clientWidth,H=cv.clientHeight,dp=devicePixelRatio||1;cv.width=W*dp;cv.height=H*dp;const g=cv.getContext('2d');g.setTransform(dp,0,0,dp,0,0);g.clearRect(0,0,W,H);g.font='12px sans-serif';
-if(!r){g.fillStyle='#8ba2c0';g.fillText('Belum ada hasil valid — jalankan analisis',20,30);return}
+if(!r){g.fillStyle='#587089';g.fillText('Belum ada hasil valid — jalankan analisis',20,30);return}
 const p=r.p,L=p.L,b=parseFloat($('#b3').value)>0?parseFloat($('#b3').value):.8,ex=Math.max(1,.08*L/(2*p.c)),hv=2*p.c*ex/L*2,bv=b*ex/L*2,H2=hv/2,Z=bv/2,sl=$('#d3s').value/50,dsc=.6*sl*V3.k/r.wmax;
 const m=Math.min(64,r.n*4),cy=Math.cos(V3.yaw),sy=Math.sin(V3.yaw),cp=Math.cos(V3.pitch),sp=Math.sin(V3.pitch),S0=W*.36*V3.zm;
 const P3=(X,Y,Zz)=>{const x1=X*cy+Zz*sy,z1=-X*sy+Zz*cy;return[W/2+x1*S0,H/2+60-(Y*cp+z1*sp)*S0,-Y*sp+z1*cp]};
@@ -345,8 +345,8 @@ Q(a(H2,-Z),c(H2,-Z),c(H2,Z),a(H2,Z),shade(s,62));Q(a(-H2,-Z),c(-H2,-Z),c(-H2,Z),
 const T=st[m],tp=(Y,z)=>P3(T.X,T.y+Y,z);Q(tp(H2,-Z),tp(H2,Z),tp(-H2,Z),tp(-H2,-Z),'#94a3b8');
 const wl=(Y,z)=>P3(-1.03,Y,z);Q(wl(-H2*2.2,-Z*1.6),wl(-H2*2.2,Z*1.6),wl(H2*2.2,Z*1.6),wl(H2*2.2,-Z*1.6),'#475569');
 fc.sort((a,b2)=>b2.z-a.z).forEach(q=>{g.beginPath();q.v.forEach((v,i)=>i?g.lineTo(v[0],v[1]):g.moveTo(v[0],v[1]));g.closePath();g.fillStyle=q.col;g.fill();g.strokeStyle='rgba(2,10,20,.45)';g.stroke()});
-if(r.p.P>0||r.p.q>0){const sd=p.dir<0?1:-1,a=tp(p.dir<0?H2:-H2,0);g.strokeStyle=g.fillStyle='#ef4444';g.lineWidth=3;g.beginPath();g.moveTo(a[0],a[1]-sd*70);g.lineTo(a[0],a[1]-sd*8);g.stroke();g.beginPath();g.moveTo(a[0],a[1]);g.lineTo(a[0]-6,a[1]-sd*12);g.lineTo(a[0]+6,a[1]-sd*12);g.fill();g.lineWidth=1;g.fillText('P = '+f(p.P,0)+' N'+(p.q?' · q = '+f(p.q,0)+' N/m':''),a[0]+10,a[1]-sd*40)}
-const lg=g.createLinearGradient(16,0,176,0);lg.addColorStop(0,shade(0,55));lg.addColorStop(.5,shade(.5,55));lg.addColorStop(1,shade(1,55));g.fillStyle=lg;g.fillRect(16,H-34,160,10);g.fillStyle='#8ba2c0';g.fillText('0',16,H-8);g.textAlign='right';g.fillText('|σ| = '+f(r.smax/1e6,2)+' MPa',176,H-8);g.textAlign='left';
+if(r.p.P>0||r.p.q>0){const sd=p.dir<0?1:-1,a=tp(p.dir<0?H2:-H2,0);g.strokeStyle=g.fillStyle='#dc2626';g.lineWidth=3;g.beginPath();g.moveTo(a[0],a[1]-sd*70);g.lineTo(a[0],a[1]-sd*8);g.stroke();g.beginPath();g.moveTo(a[0],a[1]);g.lineTo(a[0]-6,a[1]-sd*12);g.lineTo(a[0]+6,a[1]-sd*12);g.fill();g.lineWidth=1;g.fillText('P = '+f(p.P,0)+' N'+(p.q?' · q = '+f(p.q,0)+' N/m':''),a[0]+10,a[1]-sd*40)}
+const lg=g.createLinearGradient(16,0,176,0);lg.addColorStop(0,shade(0,55));lg.addColorStop(.5,shade(.5,55));lg.addColorStop(1,shade(1,55));g.fillStyle=lg;g.fillRect(16,H-34,160,10);g.fillStyle='#587089';g.fillText('0',16,H-8);g.textAlign='right';g.fillText('|σ| = '+f(r.smax/1e6,2)+' MPa',176,H-8);g.textAlign='left';
 g.fillText('w ujung = '+f(r.wtip*V3.k*1e3,2)+' mm (nyata) · faktor beban '+f(V3.k,2)+' · tampilan deformasi ×'+f(dsc*L/2,1)+' · penampang digambar ×'+f(ex,1),16,20);g.fillText('Visualisasi hasil FEM 1D — bukan solver 3D',16,38)}
 (()=>{const cv=$('#c3d');let d=null;cv.onpointerdown=e=>{d=[e.clientX,e.clientY,V3.yaw,V3.pitch];cv.style.cursor='grabbing'};window.addEventListener('pointerup',()=>{d=null;cv.style.cursor='grab'});
 cv.onpointermove=e=>{if(!d)return;V3.yaw=d[2]+(e.clientX-d[0])*.01;V3.pitch=Math.max(-1.5,Math.min(1.5,d[3]+(e.clientY-d[1])*.01));render3D()};
